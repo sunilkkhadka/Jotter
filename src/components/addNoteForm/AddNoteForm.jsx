@@ -4,6 +4,8 @@ import { addNotes } from "../../features/noteSlice";
 import { useDispatch } from "react-redux/es/exports";
 import { v4 } from "uuid";
 
+import "./AddNoteForm.scss";
+
 const AddNoteForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -20,7 +22,14 @@ const AddNoteForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+
+    if (title === "" || content === "") {
+      alert("Fields must be filled");
+      return;
+    }
     dispatch(addNotes(formattedData));
+    setTitle("");
+    setContent("");
     // noteArray.push(formattedData);
     // localStorage.setItem("notes", JSON.stringify(noteArray));
   };
@@ -34,14 +43,16 @@ const AddNoteForm = () => {
             type="text"
             placeholder="Title"
             onChange={(e) => setTitle(e.target.value)}
+            value={title}
           />
         </div>
         <div>
           <label htmlFor="content">Description: </label>
           <textarea
             cols="30"
-            rows="10"
+            rows="3"
             onChange={(e) => setContent(e.target.value)}
+            value={content}
           ></textarea>
         </div>
         <div>

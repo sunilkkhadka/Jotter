@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+//Adding CSS
+import "./style.scss";
+
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 

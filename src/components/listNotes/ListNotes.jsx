@@ -1,9 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteNote } from "../../features/noteSlice";
+
+//adding css
+import "./ListNotes.scss";
 
 const ListNotes = () => {
   const notes = useSelector((state) => state.note.notes);
+  const dispatch = useDispatch();
+
+  const deleteHandler = (e) => {
+    dispatch(deleteNote(e.target.value));
+    console.log(notes);
+  };
 
   const renderNotes = () => {
     if (localStorage.getItem("notes")) {
@@ -11,10 +21,15 @@ const ListNotes = () => {
       let rendered = notes.map((note) => {
         return (
           <div className="note" key={note.id}>
-            <Link to={`/note/${note.id}`}>
-              <h4>id: {note.id}</h4>
-              <h2>Title: {note.title}</h2>
-              <h3>Content: {note.content}</h3>
+            <Link to={`/note/${note.id}`} className="note-link">
+              <div className="texts">
+                <h2>{note.title}</h2>
+                <h3>{note.content}</h3>
+              </div>
+              <div className="buttons">
+                <button className="edit">Edit</button>
+                <button className="delete">Delete</button>
+              </div>
             </Link>
           </div>
         );
@@ -25,10 +40,15 @@ const ListNotes = () => {
       let rendered = notes.map((note) => {
         return (
           <div className="note" key={note.id}>
-            <Link to={`/note/${note.id}`}>
-              <h4>id: {note.id}</h4>
-              <h2>Title: {note.title}</h2>
-              <h3>Content: {note.content}</h3>
+            <Link to={`/note/${note.id}`} className="note-link">
+              <div className="texts">
+                <h2>{note.title}</h2>
+                <h3>{note.content}</h3>
+              </div>
+              <div className="buttons">
+                <button className="edit">Edit</button>
+                <button className="delete">Delete</button>
+              </div>
             </Link>
           </div>
         );

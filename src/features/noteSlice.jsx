@@ -16,6 +16,6 @@ const noteSlice = createSlice({
   },
 });
 
-export const { displayNote, addNotes, getNoteById } = noteSlice.actions;
+export const { displayNote, addNotes, deleteNote } = noteSlice.actions;
 
 export default noteSlice.reducer;

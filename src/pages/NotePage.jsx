@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+//ADDING CSS
+import "./NotePage.scss";
+
 const NotePage = () => {
   const { note_id } = useParams();
 
@@ -24,9 +27,8 @@ const NotePage = () => {
       let renderNote = () => {
         return (
           <div className="note">
-            <h4>id: {res.id}</h4>
-            <h2>Title: {res.title}</h2>
-            <h3>Content: {res.content}</h3>
+            <h2>{res.title}</h2>
+            <h3>{res.content}</h3>
           </div>
         );
       };
@@ -36,9 +38,8 @@ const NotePage = () => {
       let renderNote = () => {
         return (
           <div className="note">
-            <h4>id: {res.id}</h4>
-            <h2>Title: {res.title}</h2>
-            <h3>Content: {res.content}</h3>
+            <h2>{res.title}</h2>
+            <h3>{res.content}</h3>
           </div>
         );
       };
@@ -49,7 +50,9 @@ const NotePage = () => {
   return (
     <div className="note-page-container">
       {renderNotes()}
-      <Link to="/">Back to home page</Link>
+      <Link to="/" className="back">
+        Back to home page
+      </Link>
     </div>
   );
 };

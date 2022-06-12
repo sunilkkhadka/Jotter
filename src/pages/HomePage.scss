@@ -1,0 +1,20 @@
+.home-container {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    h1 {
+      padding-bottom: 2rem;
+      text-align: center;
+      font-weight: bolder;
+      color: rgb(0, 0, 240);
+    }
+  }
+
+  .right {
+    margin-left: 5rem;
+  }
+}
